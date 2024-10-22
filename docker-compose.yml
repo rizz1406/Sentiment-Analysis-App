@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  model-service:
+    build: ./model
+    container_name: model-service
+    ports:
+      - "5001:5001"
+
+  frontend-service:
+    build: ./frontend
+    container_name: frontend-service
+    ports:
+      - "8501:8501"
+    depends_on:
+      - model-service
